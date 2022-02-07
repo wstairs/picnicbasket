@@ -120,7 +120,7 @@ scene.setBackgroundImage(img`
     1112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112
     1112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112
     `)
-let mySprite = sprites.create(img`
+let picnic_food = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -138,7 +138,7 @@ let mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
-mySprite.setImage(img`
+picnic_food.setImage(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -271,3 +271,7 @@ let arrayString = [
 "berry",
 "turkey"
 ]
+for (let value of arrayImages) {
+    picnic_food.setImage(value)
+    pause(500)
+}
