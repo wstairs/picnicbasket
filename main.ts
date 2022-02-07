@@ -1,3 +1,15 @@
+function checkAnswer (text: string) {
+    for (let value of arrayString) {
+        if (text == value) {
+            info.changeScoreBy(1)
+            Correct = true
+        }
+    }
+}
+let Correct = false
+let foodGuess = ""
+let arrayString: string[] = []
+info.setScore(0)
 scene.setBackgroundImage(img`
     2221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221
     2221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221112221
@@ -264,14 +276,42 @@ img`
     ................................
     `
 ]
-let arrayString = [
+arrayString = [
 "ham",
 "apple",
 "cake",
-"berry",
+"strawberry",
 "turkey"
 ]
-for (let value of arrayImages) {
-    picnic_food.setImage(value)
-    pause(500)
+while (0 <= info.score() && info.score() <= 15) {
+    for (let value of arrayImages) {
+        picnic_food.setImage(value)
+        pause(500)
+        picnic_food.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)
+    }
+    pause(200)
+    foodGuess = game.askForString("what was one of the foods on the picnic blanket")
+    checkAnswer(foodGuess)
+}
+if (info.score() >= 15) {
+    game.over(true)
+} else {
+    game.over(false)
 }
